@@ -1,17 +1,22 @@
-# Unit3.PuppyBowlEvent.SolutionCode
+# Puppy Bowl with RTK Query
 
-Overview of the files in the repo:
+In this workshop, we'll be revisiting the [Puppy Bowl API](https://fsa-puppy-bowl.herokuapp.com/api/)! In the previous unit, you were able to interact with this API and dynamically render puppies using just vanilla JS. We will be recreating that project using the new tools at our disposal: namely, React and RTK. A user will be able to view the roster of players, add a player to the roster, see more details about a specific player, and remove a player from the roster.
 
-1. public/index.html: This is the HTML file that serves as the entry point of your React app. It contains a div element with the ID "root", which is where your React components get rendered.
+## Instructions
 
-2. src/main.jsx: This is the JavaScript entry point for your React application. It imports the main App component, and uses ReactDOM.render to render this component into the "root" div in your index.html file.
+Much of the code has already been done for you. Your focus will be on using RTK Query to make the fetch calls to the API.
 
-3. src/App.jsx: This file defines the App component, which is the top-level component of your React app. It imports and renders the Players component.
+Note: The code is _not_ functional yet! `npm run dev` will serve a broken page until you have completed most of the following steps.
 
-4. src/api/puppyBowlApi.js: This file uses Redux Toolkit's RTK Query to define an API slice for the Puppy Bowl API. It exports a hook, useFetchPlayersQuery, which your components can use to fetch data from this API.
+1. In `api.js`, correctly configure `createApi` to use `API_URL` as the base URL.
+   1. Add `"Puppy"` as a tag type.
+2. In `store.js`, configure the store to use the API slice's auto-generated reducer and custom middleware.
+3. In `puppySlice.js`, define the endpoints that will be injected into the API slice.
+   1. _(optional)_ Write `transformResponse` and `transformErrorResponse` functions for each endpoint
+4. Update `PuppyList` and `PuppyDetails` to use the correct query endpoints. Read the JSX as well! You will often have to grab more than just `data`.
+5. Update `PuppyDetails` to use the correct mutation endpoint in order to remove a puppy from the roster.
+6. Update `PuppyForm` to use the correct mutation endpoint so that a puppy is added to the roster when the form is submitted.
 
-5. src/app/store.js: This file creates your Redux store using Redux Toolkit's configureStore function. It includes the reducer and middleware from puppyBowlApi.
+## Submission
 
-6. src/features/players/Players.jsx: This file defines the Players component, which fetches and displays data about Puppy Bowl players using the useFetchPlayersQuery hook from puppyBowlApi.
-
-7. src/index.css: This file contains global styles for your app.
+Please submit the link to your GitHub repository.

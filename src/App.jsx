@@ -1,17 +1,26 @@
-// Import the React library, which allows us to define components
+import { Provider } from "react-redux";
+import store from "./store/store";
 
+import PuppyDetails from "./features/puppies/PuppyDetails";
+import PuppyList from "./features/puppies/PuppyList";
+import PuppyForm from "./features/puppies/PuppyForm";
 
-// Import the Players component, which we'll use to show a list of players
+import { useState } from "react";
 
+export default function App() {
+  const [selectedPuppyId, setSelectedPuppyId] = useState();
 
-// Define the App component
-function App() {
-  // This component renders the Players component inside a div
-  // This div has a class of 'App', which we could use for styling
   return (
-    
+    <Provider store={store}>
+      <h1>Puppy Bowl</h1>
+      <PuppyForm />
+      <main>
+        <PuppyList setSelectedPuppyId={setSelectedPuppyId} />
+        <PuppyDetails
+          selectedPuppyId={selectedPuppyId}
+          setSelectedPuppyId={setSelectedPuppyId}
+        />
+      </main>
+    </Provider>
   );
 }
-
-// Export the App component as the default export
-
