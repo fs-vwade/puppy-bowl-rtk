@@ -1,3 +1,26 @@
+import { Provider } from "react-redux";
+import store from "./store/store";
+
+import PuppyDetails from "./features/puppies/PuppyDetails";
+import PuppyList from "./features/puppies/PuppyList";
+import PuppyForm from "./features/puppies/PuppyForm";
+
+import { useState } from "react";
+
 export default function App() {
-  return <div>App</div>;
+  const [selectedPuppyId, setSelectedPuppyId] = useState();
+
+  return (
+    <Provider store={store}>
+      <h1>Puppy Bowl</h1>
+      <PuppyForm />
+      <main>
+        <PuppyList setSelectedPuppyId={setSelectedPuppyId} />
+        <PuppyDetails
+          selectedPuppyId={selectedPuppyId}
+          setSelectedPuppyId={setSelectedPuppyId}
+        />
+      </main>
+    </Provider>
+  );
 }
