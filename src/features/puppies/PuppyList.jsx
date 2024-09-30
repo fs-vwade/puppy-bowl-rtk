@@ -1,5 +1,3 @@
-import "./puppies.scss";
-
 /**
  * @component
  * Shows a list of puppies in the roster.
