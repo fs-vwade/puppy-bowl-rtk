@@ -24,16 +24,18 @@ const puppyApi = api.injectEndpoints({
 		}),
 		getPuppy: build.query({
 			query: (id) => `players/${id}`,
+			transformResponse: (response) => response.data.player,
+			transformErrorResponse: (response) => response.data.error,
 			providesTags: ["Puppy"],
 		}),
-		transformResponse: (response) => response.data.player,
-		transformErrorResponse: (response) => response.data.error,
 		addPuppy: build.mutation({
 			query: (puppy) => ({
 				url: "players/",
 				method: "POST",
 				body: puppy,
 			}),
+			transformResponse: (response) => response.data.player,
+			transformErrorResponse: (response) => response.data.error,
 			invalidatesTags: ["Puppy"],
 		}),
 		deletePuppy: build.mutation({
@@ -41,6 +43,8 @@ const puppyApi = api.injectEndpoints({
 				url: `players/${id}`,
 				method: "DELETE",
 			}),
+			transformResponse: (response) => response.success,
+			transformErrorResponse: (response) => response.data.error,
 			invalidatesTags: ["Puppy"],
 		}),
 	}),
