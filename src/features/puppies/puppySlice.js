@@ -30,12 +30,10 @@ const puppyApi = api.injectEndpoints({
 		transformErrorResponse: (response) => response.data.error,
 		addPuppy: build.mutation({
 			query: (puppy) => ({
-				url: "players",
+				url: "players/",
 				method: "POST",
 				body: puppy,
 			}),
-			transformResponse: (response) => response.data.newPlayer,
-			transformErrorResponse: (response) => response.data.error,
 			invalidatesTags: ["Puppy"],
 		}),
 		deletePuppy: build.mutation({
@@ -43,8 +41,6 @@ const puppyApi = api.injectEndpoints({
 				url: `players/${id}`,
 				method: "DELETE",
 			}),
-			transformResponse: (response) => response.success,
-			transformErrorResponse: (response) => response.data.error,
 			invalidatesTags: ["Puppy"],
 		}),
 	}),
