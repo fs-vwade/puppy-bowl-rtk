@@ -1,4 +1,5 @@
-import { useGetPuppiesQuery, useGetPuppyQuery } from "./puppySlice";
+import PropTypes from "prop-types";
+import { useGetPuppiesQuery } from "./puppySlice";
 
 /**
  * @component
@@ -35,3 +36,5 @@ export default function PuppyList({ setSelectedPuppyId }) {
 		</article>
 	);
 }
+
+PuppyList.propTypes = { setSelectedPuppyId: PropTypes.number.isRequired };
