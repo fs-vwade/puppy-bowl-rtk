@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useGetPuppyQuery, useDeletePuppyMutation } from "./puppySlice";
 
 /**
@@ -55,3 +56,8 @@ export default function PuppyDetails({ selectedPuppyId, setSelectedPuppyId }) {
 		</aside>
 	);
 }
+
+PuppyDetails.propTypes = {
+	selectedPuppyId: PropTypes.string.isRequired,
+	setSelectedPuppyId: PropTypes.function.isRequired,
+};
